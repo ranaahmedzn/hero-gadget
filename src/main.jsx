@@ -8,11 +8,14 @@ import {
   } from "react-router-dom";
 import Home from './components/Home';
 import About from './components/About';
+import ErrorPage from './components/ErrorPage';
+import Shop from './components/Shop';
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <App />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: '/',
@@ -20,7 +23,8 @@ const router = createBrowserRouter([
             },
             {
                 path: 'shop',
-                element: <h2>This is shop component</h2>
+                element: <Shop />,
+                loader: () => fetch('products.json')
             },
             {
                 path: 'cart',
